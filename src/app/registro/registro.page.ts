@@ -8,16 +8,17 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./registro.page.scss'],
 })
 
+
 export class RegistroPage implements OnInit {
 
   formularioRegistro: FormGroup;
 
-  constructor(public fb: FormBuilder, public alertController: AlertController) {
+  constructor (public fb: FormBuilder, public alertController: AlertController) {
 
     this.formularioRegistro = this.fb.group({
-      'nombre': new FormControl('',Validators.required),
-      'contraseña': new FormControl('',Validators.required),
-      'confirmarContraseña': new FormControl('',Validators.required)
+      'nombre': new FormControl("",Validators.required),
+      'contraseña': new FormControl("",Validators.required),
+      'confirmarContraseña': new FormControl("",Validators.required)
     });
 
    }
@@ -26,16 +27,26 @@ export class RegistroPage implements OnInit {
   }
 
   async guardar() {
+
     var f = this.formularioRegistro.value;
 
     if (this.formularioRegistro.invalid) {
       const alert = await this.alertController.create({
-        message: 'Rellene Todos los Campos',
-        buttons: ['Aceptar']
+        header: 'Error',
+        message: 'Debe Rellenar Todos los Campos.',
+        buttons: ['Aceptar'],
       });
+  
       await alert.present();
       return;
+
     }
 
+    var usuario = {
+      nombre: f.nombre,
+      contraseña: f.contraseña,
+    }
+    
+    localStorage.setItem('usuario',JSON.stringify(usuario));
   }
 }

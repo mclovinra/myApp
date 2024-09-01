@@ -18,12 +18,10 @@ const routes: Routes = [
     path: 'recetas', loadChildren: () => import('./recetas/recetas.module').then( m => m.RecetasPageModule)
   },
   {
-    path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    path: 'login', loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'registro',
-    loadChildren: () => import('./registro/registro.module').then( m => m.RegistroPageModule)
+    path: 'registro', loadChildren: () => import('./registro/registro.module').then( m => m.RegistroPageModule)
   },
 ];
 

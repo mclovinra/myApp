@@ -16,19 +16,17 @@
       <form [formGroup]="formularioLogin">
         <ion-item>
           <ion-label position="floating" >Nombre</ion-label>
-          <ion-input FormControlName="nombre" ></ion-input>
+          <ion-input formControlName="nombre" ></ion-input>
         </ion-item>  
         <ion-item>
           <ion-label position="floating" >Contraseña</ion-label>
-          <ion-input FormControlName="contraseña" type="password" ></ion-input>
+          <ion-input formControlName="contraseña" type="password" ></ion-input>
         </ion-item>  
       </form>
       <br>
-      <!-- (click)='ingresar()' -->
-       <ion-button>
+       <ion-button (click)='ingresar()'>
         Ingresar
        </ion-button>
-       <!-- (click)='ingresar()' -->
     </ion-card-content>
   </ion-card>
 </ion-content>
