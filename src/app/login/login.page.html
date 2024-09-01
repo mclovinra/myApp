@@ -18,17 +18,17 @@
           <ion-label position="floating" >Nombre</ion-label>
           <ion-input FormControlName="nombre" ></ion-input>
         </ion-item>  
-      </form>
-      <form [formGroup]="formularioLogin">
         <ion-item>
           <ion-label position="floating" >Contraseña</ion-label>
           <ion-input FormControlName="contraseña" type="password" ></ion-input>
         </ion-item>  
       </form>
       <br>
-       <ion-button >
+      <!-- (click)='ingresar()' -->
+       <ion-button>
         Ingresar
        </ion-button>
+       <!-- (click)='ingresar()' -->
     </ion-card-content>
   </ion-card>
 </ion-content>

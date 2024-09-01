@@ -15,7 +15,7 @@ export class LoginPage implements OnInit {
     this.formularioLogin = this.fb.group({
       'nombre': new FormControl("",Validators.required),
       'contraseña': new FormControl("",Validators.required)
-    })
+    });
 
    }
 
