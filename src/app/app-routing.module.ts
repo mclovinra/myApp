@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { noIngresadoGuard } from './no-ingresado.guard';
+import { ingresadoGuard } from './ingresado.guard';
 
 const routes: Routes = [
   {
@@ -8,20 +10,24 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'inicio',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
-    path: 'inicio', loadChildren: () => import('./inicio/inicio.module').then( m => m.InicioPageModule)
+    path: 'inicio', loadChildren: () => import('./inicio/inicio.module').then( m => m.InicioPageModule),
+    canActivate: [ingresadoGuard]
   },
   {
-    path: 'recetas', loadChildren: () => import('./recetas/recetas.module').then( m => m.RecetasPageModule)
+    path: 'recetas', loadChildren: () => import('./recetas/recetas.module').then( m => m.RecetasPageModule),
+    canActivate: [ingresadoGuard]
   },
   {
-    path: 'login', loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    path: 'login', loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule),
+    canActivate: [noIngresadoGuard]
   },
   {
-    path: 'registro', loadChildren: () => import('./registro/registro.module').then( m => m.RegistroPageModule)
+    path: 'registro', loadChildren: () => import('./registro/registro.module').then( m => m.RegistroPageModule),
+    canActivate: [noIngresadoGuard]
   },
 ];
 
