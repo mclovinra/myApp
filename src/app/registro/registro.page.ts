@@ -33,7 +33,7 @@ export class RegistroPage implements OnInit {
     if (this.formularioRegistro.invalid) {
       const alert = await this.alertController.create({
         header: 'Error',
-        message: 'Debe Rellenar Todos los Campos.',
+        message: 'Favor de Seguir los Requisitos.',
         buttons: ['Aceptar'],
       });
   
