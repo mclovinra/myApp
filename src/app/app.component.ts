@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AlertController, NavController } from '@ionic/angular';
 
 @Component({
@@ -9,7 +10,7 @@ import { AlertController, NavController } from '@ionic/angular';
 
 export class AppComponent {
 
-  constructor(public alertController: AlertController, public navCtrl: NavController) {}
+  constructor(private readonly router: Router  , public alertController: AlertController, public navCtrl: NavController) {}
 
   async salir(){
     const alert = await this.alertController.create({
@@ -25,7 +26,7 @@ export class AppComponent {
           text: 'Si',
           handler: () => {              
             localStorage.removeItem('ingresado');
-            this.navCtrl.navigateRoot('login');
+            this.router.navigateByUrl('login');
           }
         }
       ]

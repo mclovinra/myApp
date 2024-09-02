@@ -17,6 +17,7 @@ export class RegistroPage implements OnInit {
   constructor (public fb: FormBuilder, public alertController: AlertController, public navCtr: NavController) {
 
     this.formularioRegistro = this.fb.group({
+      nombre: ['', Validators.required],
       password: ['', [Validators.required, passwordFormatValidator()]],
       confirmPassword: ['', Validators.required]
     }, { validator: passwordMatchValidator('password', 'confirmPassword') });
@@ -28,7 +29,7 @@ export class RegistroPage implements OnInit {
 
   async guardar() {
 
-    var f = this.formularioRegistro.value;
+    let f = this.formularioRegistro.value;
 
     if (this.formularioRegistro.invalid) {
       const alert = await this.alertController.create({
@@ -42,11 +43,12 @@ export class RegistroPage implements OnInit {
 
     }
 
-    var usuario = {
+    const usuario = {
       nombre: f.nombre,
-      contraseña: f.contraseña,
+      contraseña: f.password,
     }
     
+    console.log('ingresado'),
     localStorage.setItem('usuario',JSON.stringify(usuario));
     localStorage.setItem('ingresado','true');
     this.navCtr.navigateRoot('login');
