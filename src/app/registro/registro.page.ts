@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { AlertController, NavController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-registro',
@@ -13,6 +14,7 @@ export class RegistroPage implements OnInit {
 
   formularioRegistro: FormGroup;
 
+  constructor (public fb: FormBuilder, public alertController: AlertController, public navCtr: NavController) {
   constructor (public fb: FormBuilder, public alertController: AlertController, public navCtr: NavController) {
 
     this.formularioRegistro = this.fb.group({
