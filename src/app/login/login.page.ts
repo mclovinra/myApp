@@ -10,6 +10,7 @@ import { AlertController, NavController } from '@ionic/angular';
 export class LoginPage implements OnInit {
 
   formularioLogin: FormGroup;
+  hidePassword= true;
 
   constructor(public fb: FormBuilder, public alertController: AlertController, public navCtr: NavController) {
 
@@ -23,7 +24,11 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  async ingresar(){
+  togglePasswordVisibility() {
+    this.hidePassword = !this.hidePassword;
+  }
+
+  /*async ingresar(){
 
     var f = this.formularioLogin.value;
 
@@ -43,6 +48,7 @@ export class LoginPage implements OnInit {
       await alert.present();
       return;
     }
-  }
+  }*/
+
 
 }

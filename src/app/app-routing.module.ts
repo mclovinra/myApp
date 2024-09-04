@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { noIngresadoGuard } from './no-ingresado.guard';
-import { ingresadoGuard } from './ingresado.guard';
+/*import { noIngresadoGuard } from './no-ingresado.guard';
+import { ingresadoGuard } from './ingresado.guard';*/
 
 const routes: Routes = [
   {
@@ -15,19 +15,19 @@ const routes: Routes = [
   },
   {
     path: 'inicio', loadChildren: () => import('./inicio/inicio.module').then( m => m.InicioPageModule),
-    canActivate: [ingresadoGuard]
+    /*canActivate: [ingresadoGuard]*/
   },
   {
     path: 'recetas', loadChildren: () => import('./recetas/recetas.module').then( m => m.RecetasPageModule),
-    canActivate: [ingresadoGuard]
+    /*canActivate: [ingresadoGuard]*/
   },
   {
     path: 'login', loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule),
-    canActivate: [noIngresadoGuard]
+    /*canActivate: [noIngresadoGuard]*/
   },
   {
     path: 'registro', loadChildren: () => import('./registro/registro.module').then( m => m.RegistroPageModule),
-    canActivate: [noIngresadoGuard]
+    /*canActivate: [noIngresadoGuard]*/
   },
 ];
 
@@ -37,4 +37,5 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

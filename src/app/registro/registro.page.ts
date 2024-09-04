@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { AlertController, NavController } from '@ionic/angular';
+import { AlertController, IonicModule, NavController } from '@ionic/angular';
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import {ChangeDetectionStrategy, signal} from '@angular/core';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
+
 
 @Component({
   selector: 'app-registro',
@@ -13,6 +19,8 @@ import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 export class RegistroPage implements OnInit {
 
   formularioRegistro: FormGroup;
+  hidePassword= true;
+  hideConfirmPassword= true;
 
   constructor (public fb: FormBuilder, public alertController: AlertController, public navCtr: NavController) {
 
@@ -53,6 +61,14 @@ export class RegistroPage implements OnInit {
     localStorage.setItem('ingresado','true');
     this.navCtr.navigateRoot('login');
 
+  }
+
+  togglePasswordVisibility() {
+    this.hidePassword = !this.hidePassword;
+  }
+  
+  toggleConfirmPasswordVisibility() {
+    this.hideConfirmPassword = !this.hideConfirmPassword;
   }
 }
 

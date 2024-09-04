@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/login"></ion-back-button>
     </ion-buttons>
-    <ion-title>Resgitrarse</ion-title>
+    <ion-title>Registrarse</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -16,26 +16,36 @@
       <form [formGroup]="formularioRegistro" (ngSubmit)="guardar()">
         <ion-item>
           <ion-label position="floating">Nombre</ion-label>
-          <ion-input formControlName="nombre" ></ion-input>
-        </ion-item> 
+          <ion-input formControlName="nombre"></ion-input>
+        </ion-item>
+        
         <ion-item>
           <ion-label position="floating">Contraseña</ion-label>
-          <ion-input formControlName="password" type="password"></ion-input>
+          <ion-input [type]="hidePassword ? 'password' : 'text'" formControlName="password">
+            <ion-button slot="end" fill="clear" (click)="togglePasswordVisibility()">
+              <ion-icon [name]="hidePassword ? 'eye-off' : 'eye'"></ion-icon>
+            </ion-button>
+          </ion-input>
           <div *ngIf="formularioRegistro.get('password')?.errors?.['passwordInvalidFormat']">
             La contraseña debe tener 4 números, 3 caracteres y 1 mayúscula.
           </div>
         </ion-item>
+        
         <ion-item>
           <ion-label position="floating">Confirmar Contraseña</ion-label>
-          <ion-input formControlName="confirmPassword" type="password"></ion-input>
+          <ion-input [type]="hideConfirmPassword ? 'password' : 'text'" formControlName="confirmPassword">
+            <ion-button slot="end" fill="clear" (click)="toggleConfirmPasswordVisibility()">
+              <ion-icon [name]="hideConfirmPassword ? 'eye-off' : 'eye'"></ion-icon>
+            </ion-button>
+          </ion-input>
           <div *ngIf="formularioRegistro.errors?.['passwordsMismatch']">
             Las contraseñas no coinciden.
           </div>
         </ion-item>
+        
         <br>
         <ion-button expand="full" type="submit" [disabled]="formularioRegistro.invalid">Registrarse</ion-button>
       </form>
     </ion-card-content>
   </ion-card>
 </ion-content>
-
